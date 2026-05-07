@@ -5,13 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Программа мероприятия</title>
 <style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  body {
+  .schedule-wrapper {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-height: 100vh;
     background: linear-gradient(135deg, #1a2a3a 0%, #0d1b2a 30%, #1b3a4b 70%, #1a2a3a 100%);
@@ -19,10 +13,19 @@
     padding: 20px;
     position: relative;
     overflow-x: hidden;
+    width: 100%;
   }
-
-  .particles {
-    position: fixed;
+  
+  .schedule-wrapper *, 
+  .schedule-wrapper *::before, 
+  .schedule-wrapper *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .schedule-wrapper .particles {
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -54,8 +57,8 @@
     position: relative;
     z-index: 1;
   }
-
-  h1 {
+  
+  .schedule-wrapper h1 {
     text-align: center;
     font-size: 2rem;
     font-weight: 300;
@@ -66,13 +69,13 @@
     text-shadow: 0 0 20px rgba(100, 180, 220, 0.3);
   }
 
-  .schedule-grid {
+  .schedule-wrapper .schedule-grid {
     display: flex;
     flex-direction: column;
     gap: 8px;
   }
 
-  .schedule-row {
+  .schedule-wrapper .schedule-row {
     display: flex;
     border: 1px solid rgba(120, 180, 220, 0.4);
     border-radius: 14px;
@@ -83,14 +86,14 @@
     transition: all 0.3s ease;
   }
 
-  .schedule-row:hover {
+  .schedule-wrapper .schedule-row:hover {
     background: rgba(20, 50, 75, 0.7);
     border-color: rgba(140, 200, 240, 0.6);
     box-shadow: 0 0 25px rgba(80, 160, 200, 0.15);
     transform: translateY(-1px);
   }
 
-  .time-cell {
+  .schedule-wrapper .time-cell {
     min-width: 140px;
     max-width: 140px;
     display: flex;
@@ -106,7 +109,7 @@
     background: rgba(25, 55, 80, 0.4);
   }
 
-  .content-cell {
+  .schedule-wrapper .content-cell {
     flex: 1;
     display: flex;
     align-items: center;
@@ -118,17 +121,17 @@
     min-height: 60px;
   }
 
-  .full-width .content-cell {
+  .schedule-wrapper .full-width .content-cell {
     font-weight: 500;
     color: #d0e8f5;
   }
 
-  .multi-cell-row {
+  .schedule-wrapper .multi-cell-row {
     display: flex;
     flex: 1;
   }
 
-  .multi-cell {
+  .schedule-wrapper .multi-cell {
     flex: 1;
     padding: 12px 10px 46px;
     display: flex;
@@ -141,15 +144,15 @@
     position: relative;
   }
 
-  .multi-cell:last-child {
+  .schedule-wrapper .multi-cell:last-child {
     border-right: none;
   }
 
-  .multi-cell:hover {
+  .schedule-wrapper .multi-cell:hover {
     background: rgba(40, 80, 110, 0.3);
   }
 
-  .multi-cell .session-title {
+  .schedule-wrapper .multi-cell .session-title {
     font-size: 0.82rem;
     line-height: 1.35;
     color: #b0d0e5;
@@ -157,7 +160,7 @@
     text-align: center;
   }
 
-  .session-meta {
+  .schedule-wrapper .session-meta {
     position: absolute;
     bottom: 12px;
     left: 50%;
@@ -166,7 +169,7 @@
     pointer-events: none;
   }
 
-  .session-meta-line {
+  .schedule-wrapper .session-meta-line {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -175,28 +178,28 @@
     font-size: 0.78rem;
   }
 
-  .session-meta-line .session-type {
+  .schedule-wrapper .session-meta-line .session-type {
     color: #70a8c8;
     font-style: italic;
     letter-spacing: 0.5px;
   }
 
-  .session-meta-line .session-audience {
+  .schedule-wrapper .session-meta-line .session-audience {
     color: #80b0cc;
     opacity: 0.9;
     font-weight: 500;
   }
 
-  .special-row {
+  .schedule-wrapper .special-row {
     background: rgba(20, 50, 80, 0.5);
   }
 
-  .special-row .content-cell {
+  .schedule-wrapper .special-row .content-cell {
     color: #c8e4f5;
     font-weight: 400;
   }
 
-  .location {
+  .schedule-wrapper .location {
     font-size: 0.8rem;
     color: #80b0cc;
     margin-top: 4px;
@@ -204,72 +207,69 @@
   }
 
   @media (max-width: 1200px) {
-    .time-cell {
+    .schedule-wrapper .time-cell {
       min-width: 120px;
       max-width: 120px;
       font-size: 0.9rem;
       padding: 12px 10px;
     }
-    .multi-cell {
+    .schedule-wrapper .multi-cell {
       padding: 10px 6px 44px;
       min-height: 100px;
     }
-    .multi-cell .session-title {
+    .schedule-wrapper .multi-cell .session-title {
       font-size: 0.76rem;
     }
   }
 
   @media (max-width: 1000px) {
-    body {
-      padding: 10px;
-    }
-    h1 {
+    .schedule-wrapper h1 {
       font-size: 1.4rem;
       margin-bottom: 20px;
     }
-    .time-cell {
+    .schedule-wrapper .time-cell {
       min-width: 100px;
       max-width: 100px;
       font-size: 0.82rem;
       padding: 10px 8px;
     }
-    .multi-cell {
+    .schedule-wrapper .multi-cell {
       padding: 8px 4px 40px;
       min-height: 90px;
     }
-    .multi-cell .session-title {
+    .schedule-wrapper .multi-cell .session-title {
       font-size: 0.7rem;
     }
-    .multi-cell .session-type {
+    .schedule-wrapper .multi-cell .session-type {
       font-size: 0.68rem;
     }
-    .content-cell {
+    .schedule-wrapper .content-cell {
       padding: 12px 10px;
       font-size: 0.88rem;
     }
   }
 
   @media (max-width: 768px) {
-    .multi-cell-row {
+    .schedule-wrapper .multi-cell-row {
       flex-direction: column;
     }
-    .multi-cell {
+    .schedule-wrapper .multi-cell {
       border-right: none;
       border-bottom: 1px dashed rgba(120, 180, 220, 0.2);
       min-height: 70px;
-      padding: 50px 15px 44px;
+      padding: 12px 15px 48px;
       justify-content: flex-start; /* чтобы метка снизу не перекрывала название */
     }
-    .multi-cell:last-child {
+    .schedule-wrapper .multi-cell:last-child {
       border-bottom: none;
     }
-    .multi-cell .session-title {
+    .schedule-wrapper .multi-cell .session-title {
       font-size: 0.85rem;
       margin-top: 2px;
     }
 
-    .session-meta {
-      bottom: 6px;
+    .schedule-wrapper .session-meta {
+      bottom: 10px;
       left: 14px;
       right: 14px;
       transform: none;
@@ -277,7 +277,7 @@
       max-width: none;
     }
 
-    .session-meta-line {
+    .schedule-wrapper .session-meta-line {
       flex-direction: row;
       align-items: baseline;
       justify-content: center;
@@ -285,72 +285,69 @@
       flex-wrap: wrap;
     }
 
-    .session-meta-line .session-type {
+    .schedule-wrapper .session-meta-line .session-type {
       text-align: center;
       width: 100%;
       flex: 0 0 auto;
     }
 
-    .session-meta-line .session-audience {
+    .schedule-wrapper .session-meta-line .session-audience {
       text-align: right;
       white-space: normal; /* позволяет разбиться на 2 строки */
       max-width: 62%;
       margin-left: auto;
       word-break: break-word;
     }
-    .time-cell {
+    .schedule-wrapper .time-cell {
       min-width: 90px;
       max-width: 90px;
       font-size: 0.8rem;
       padding: 12px 8px;
     }
-    .content-cell {
+    .schedule-wrapper .content-cell {
       padding: 14px 15px;
       font-size: 0.92rem;
     }
-    .schedule-row {
+    .schedule-wrapper .schedule-row {
       border-radius: 10px;
     }
   }
 
   @media (max-width: 480px) {
-    body {
-      padding: 8px;
-    }
-    h1 {
+    .schedule-wrapper h1 {
       font-size: 1.1rem;
       letter-spacing: 1px;
     }
-    .schedule-grid {
+    .schedule-wrapper .schedule-grid {
       gap: 6px;
     }
-    .schedule-row {
+    .schedule-wrapper .schedule-row {
       border-radius: 8px;
     }
-    .time-cell {
+    .schedule-wrapper .time-cell {
       min-width: 75px;
       max-width: 75px;
       font-size: 0.72rem;
       padding: 10px 6px;
     }
-    .multi-cell {
-      padding: 8px 10px 40px;
+    .schedule-wrapper .multi-cell {
+      padding: 8px 10px 44px;
       min-height: 60px;
       justify-content: flex-start;
     }
-    .multi-cell .session-title {
+    .schedule-wrapper .multi-cell .session-title {
       font-size: 0.78rem;
     }
-    .multi-cell .session-type {
+    .schedule-wrapper .multi-cell .session-type {
       font-size: 0.65rem;
     }
-    .content-cell {
+    .schedule-wrapper .content-cell {
       padding: 12px 10px;
       font-size: 0.85rem;
     }
 
-    .session-meta {
-      bottom: 6px;
+    .schedule-wrapper .session-meta {
+      bottom: 10px;
     }
   }
 </style>
@@ -359,6 +356,7 @@
 
 <div class="particles" id="particles"></div>
 
+<div class="schedule-wrapper">
 <div class="container">
   <h1>Программа мероприятия</h1>
   <div class="schedule-grid">
@@ -556,6 +554,8 @@
     }
   })();
 </script>
+</div>
+</div>
 </body>
 </html>
 
