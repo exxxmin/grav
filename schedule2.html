@@ -1,0 +1,305 @@
+!doctype html
+html lang=ru
+head
+  meta charset=UTF-8 
+  meta name=viewport content=width=device-width, initial-scale=1.0 
+  titleРасписание мероприятияtitle
+  style
+    root{
+      --bg#071425;
+      --card#0c2238;
+      --line#48b8ff66;
+      --text#d9f2ff;
+      --muted#9cc7df;
+      --accent#66d4ff;
+    }
+
+     { box-sizing border-box; }
+
+    body{
+      margin0;
+      font-familySegoe UI, Tahoma, sans-serif;
+      colorvar(--text);
+      background #000;
+        var(--bg);
+      min-height100vh;
+      padding28px;
+    }
+
+    .wrap{
+      max-width1200px;
+      margin0 auto;
+    }
+
+    .title{
+      margin0 0 14px;
+      font-size28px;
+      font-weight700;
+      letter-spacing.3px;
+      color#eaf9ff;
+    }
+
+    .subtitle{
+      margin0 0 20px;
+      colorvar(--muted);
+      font-size14px;
+    }
+
+     ===== DESKTOP TABLE ===== 
+    .schedule{
+      width100%;
+      border-collapseseparate;
+      border-spacing0;
+      backgroundrgba(12,34,56,.55);
+      border1px solid var(--line);
+      border-radius14px;
+      overflowhidden;
+      backdrop-filterblur(2px);
+    }
+
+    .schedule td{
+      border-right1px solid var(--line);
+      border-bottom1px solid var(--line);
+      padding12px 10px;
+      text-aligncenter;
+      vertical-alignmiddle;
+      font-size14px;
+      line-height1.35;
+    }
+
+    .schedule trlast-child td{ border-bottom0; }
+    .schedule tdlast-child{ border-right0; }
+
+    .time{
+      width130px;
+      colorvar(--accent);
+      font-weight700;
+      backgroundrgba(102,212,255,.06);
+      white-spacenowrap;
+    }
+
+    .single{
+      text-aligncenter;
+      font-weight600;
+      color#e8f8ff;
+      backgroundrgba(102,212,255,.06);
+    }
+
+    .track{
+      min-width150px;
+      color#d7f0ff;
+    }
+
+    .type{
+      margin-top6px;
+      font-size12px;
+      colorvar(--muted);
+      font-styleitalic;
+    }
+
+     ===== MOBILE CARDS (hidden on desktop) ===== 
+    .mobile-schedule{
+      displaynone;
+    }
+
+    .slot{
+      border1px solid var(--line);
+      border-radius12px;
+      backgroundrgba(12,34,56,.6);
+      overflowhidden;
+      margin-bottom12px;
+    }
+
+    .slot-time{
+      padding10px 12px;
+      colorvar(--accent);
+      font-weight700;
+      font-size14px;
+      backgroundrgba(102,212,255,.08);
+      border-bottom1px solid var(--line);
+    }
+
+    .slot-content{
+      padding10px 12px;
+    }
+
+    .slot-item{
+      padding8px 0;
+      border-bottom1px dashed rgba(72,184,255,.35);
+      font-size14px;
+      line-height1.35;
+    }
+
+    .slot-itemlast-child{
+      border-bottom0;
+      padding-bottom2px;
+    }
+
+    .slot-item .type{
+      margin-top4px;
+      font-size12px;
+    }
+
+    .slot-single{
+      font-weight600;
+      color#e8f8ff;
+      font-size14px;
+      line-height1.35;
+    }
+
+    .footer-note{
+      margin-top12px;
+      colorvar(--muted);
+      font-size13px;
+    }
+
+     ===== PHONE ADAPTIVE ===== 
+    @media (max-width 768px){
+      body{
+        padding14px;
+      }
+
+      .title{
+        font-size22px;
+        margin-bottom10px;
+      }
+
+      .subtitle{
+        margin-bottom14px;
+        font-size13px;
+      }
+
+       Hide table on phone 
+      .schedule{
+        displaynone;
+      }
+
+       Show mobile cards 
+      .mobile-schedule{
+        displayblock;
+      }
+    }
+  style
+head
+body
+  div class=wrap
+    
+
+    !-- DESKTOP --
+    table class=schedule aria-label=Расписание мероприятия (десктоп)
+      tbody
+        tr
+          td class=time10.00–11.00td
+          td class=single colspan=6Регистрация, приветственный кофеtd
+        tr
+        tr
+          td class=time11.00–11.15td
+          td class=single colspan=6Открытие мероприятияtd
+        tr
+        tr
+          td class=time11.15–13.00td
+          td class=trackАппаратное обеспечение систем ИИ и обработки данныхdiv class=typeСекцияdivtd
+          td class=trackOpen trackdiv class=typeСекцияdivtd
+          td class=trackИИ в образованииdiv class=typeСекцияdivtd
+          td class=trackДоверие и недоверие к системам ИИ в области здоровьяdiv class=typeКруглый столdivtd
+          td class=trackИИ и большие данные в оценке кадровой потребностиdiv class=typeКруглый столdivtd
+          td class=trackРоссийско-Китайское сотрудничество в области ИИdiv class=typeСекцияdivtd
+        tr
+        tr
+          td class=time13.00–13.30td
+          td class=single colspan=6Кофе-брейкtd
+        tr
+        tr
+          td class=time13.30–15.15td
+          td class=trackРобототехника и ИИ в промышленностиdiv class=typeСекцияdivtd
+          td class=trackOpen trackdiv class=typeСекцияdivtd
+          td class=trackИИ и большие данные в социальной сфере и госуправленииdiv class=typeСекцияdivtd
+          td class=trackИИ в аналитикеdiv class=typeКруглый столdivtd
+          td class=trackЗаседание экспертного совета по академической этике использования ИИdiv class=typeКруглый столdivtd
+          td class=trackЗакрытое совещание проректоров и вендоров ПОdiv class=typeКруглый столdivtd
+        tr
+        tr
+          td class=time15.15–16.30td
+          td class=single colspan=6Обед  Нетворкингtd
+        tr
+        tr
+          td class=time16.30–17.00td
+          td class=single colspan=6Торжественное открытие церемонии награждения (актовый зал)td
+        tr
+        tr
+          td class=time17.00–19.00td
+          td class=single colspan=6Церемония награждения Премией «Гравитация» (актовый зал)td
+        tr
+        tr
+          td class=time19.00–21.00td
+          td class=single colspan=6Фуршет  Культурная программаtd
+        tr
+      tbody
+    table
+
+    !-- MOBILE --
+    div class=mobile-schedule aria-label=Расписание мероприятия (мобильная версия)
+      section class=slot
+        div class=slot-time10.00–11.00div
+        div class=slot-contentdiv class=slot-singleРегистрация, приветственный кофеdivdiv
+      section
+
+      section class=slot
+        div class=slot-time11.00–11.15div
+        div class=slot-contentdiv class=slot-singleОткрытие мероприятияdivdiv
+      section
+
+      section class=slot
+        div class=slot-time11.15–13.00div
+        div class=slot-content
+          div class=slot-itemАппаратное обеспечение систем ИИ и обработки данныхdiv class=typeСекцияdivdiv
+          div class=slot-itemOpen trackdiv class=typeСекцияdivdiv
+          div class=slot-itemИИ в образованииdiv class=typeСекцияdivdiv
+          div class=slot-itemДоверие и недоверие к системам ИИ в области здоровьяdiv class=typeКруглый столdivdiv
+          div class=slot-itemИИ и большие данные в оценке кадровой потребностиdiv class=typeКруглый столdivdiv
+          div class=slot-itemРоссийско-Китайское сотрудничество в области ИИdiv class=typeКруглый столdivdiv
+        div
+      section
+
+      section class=slot
+        div class=slot-time13.00–13.30div
+        div class=slot-contentdiv class=slot-singleКофе-брейкdivdiv
+      section
+
+      section class=slot
+        div class=slot-time13.30–15.15div
+        div class=slot-content
+          div class=slot-itemРобототехника и ИИ в промышленностиdiv class=typeСекцияdivdiv
+          div class=slot-itemOpen trackdiv class=typeСекцияdivdiv
+          div class=slot-itemИИ и большие данные в социальной сфере и госуправленииdiv class=typeСекцияdivdiv
+          div class=slot-itemИИ в аналитикеdiv class=typeКруглый столdivdiv
+          div class=slot-itemЗаседание экспертного совета по академической этике использования ИИdiv class=typeКруглый столdivdiv
+          div class=slot-itemЗакрытое совещание проректоров и вендоров ПОdiv class=typeКруглый столdivdiv
+        div
+      section
+
+      section class=slot
+        div class=slot-time15.15–16.30div
+        div class=slot-contentdiv class=slot-singleОбед  Нетворкингdivdiv
+      section
+
+      section class=slot
+        div class=slot-time16.30–17.00div
+        div class=slot-contentdiv class=slot-singleТоржественное открытие церемонии награждения (актовый зал)divdiv
+      section
+
+      section class=slot
+        div class=slot-time17.00–19.00div
+        div class=slot-contentdiv class=slot-singleЦеремония награждения Премией «Гравитация» (актовый зал)divdiv
+      section
+
+      section class=slot
+        div class=slot-time19.00–21.00div
+        div class=slot-contentdiv class=slot-singleФуршет  Культурная программаdivdiv
+      section
+    div
+
+   
+  div
+body
+html
