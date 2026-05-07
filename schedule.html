@@ -8,12 +8,13 @@
   .schedule-wrapper {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-height: 100vh;
-    background: linear-gradient(135deg, #1a2a3a 0%, #0d1b2a 30%, #1b3a4b 70%, #1a2a3a 100%);
+    background: #000;
     color: #c0d8e8;
-    padding: 20px 10px;
+    padding: 20px 0;
     position: relative;
     overflow-x: hidden;
     width: 100%;
+    box-sizing: border-box;
   }
   
   .schedule-wrapper *, 
@@ -22,6 +23,15 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+  }
+  
+  .schedule-wrapper .container {
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    padding: 0 10px;
+    width: 100%;
   }
   
   .schedule-wrapper .particles {
@@ -324,6 +334,9 @@
     .schedule-wrapper .schedule-row {
       border-radius: 10px;
     }
+    .schedule-wrapper .container {
+      padding: 0 5px;
+    }
   }
 
   @media (max-width: 480px) {
@@ -339,14 +352,14 @@
       width: 100%;
     }
     .schedule-wrapper .time-cell {
-      min-width: 75px;
-      max-width: 75px;
-      font-size: 0.72rem;
-      padding: 10px 6px;
+      min-width: 70px;
+      max-width: 70px;
+      font-size: 0.7rem;
+      padding: 10px 4px;
       flex-shrink: 0;
     }
     .schedule-wrapper .multi-cell {
-      padding: 8px 10px 52px;
+      padding: 8px 8px 52px;
       min-height: 60px;
       justify-content: flex-start;
       width: 100%;
@@ -363,7 +376,7 @@
       font-size: 0.65rem;
     }
     .schedule-wrapper .content-cell {
-      padding: 12px 10px;
+      padding: 12px 8px;
       font-size: 0.85rem;
       word-break: break-word;
       overflow-wrap: break-word;
@@ -371,6 +384,9 @@
 
     .schedule-wrapper .session-meta {
       bottom: 8px;
+    }
+    .schedule-wrapper .container {
+      padding: 0;
     }
   }
 </style>
