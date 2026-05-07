@@ -10,7 +10,7 @@
     min-height: 100vh;
     background: linear-gradient(135deg, #1a2a3a 0%, #0d1b2a 30%, #1b3a4b 70%, #1a2a3a 100%);
     color: #c0d8e8;
-    padding: 20px;
+    padding: 20px 10px;
     position: relative;
     overflow-x: hidden;
     width: 100%;
@@ -265,6 +265,7 @@
       justify-content: flex-start;
       width: 100%;
       overflow-wrap: break-word;
+      word-break: break-word;
     }
     .schedule-wrapper .multi-cell:last-child {
       border-bottom: none;
@@ -272,6 +273,9 @@
     .schedule-wrapper .multi-cell .session-title {
       font-size: 0.85rem;
       margin-top: 2px;
+      word-break: break-word;
+      overflow-wrap: break-word;
+      max-width: 100%;
     }
 
     .schedule-wrapper .session-meta {
@@ -299,7 +303,7 @@
 
     .schedule-wrapper .session-meta-line .session-audience {
       text-align: right;
-      white-space: normal; /* позволяет разбиться на 2 строки */
+      white-space: normal;
       max-width: 62%;
       margin-left: auto;
       word-break: break-word;
@@ -309,10 +313,13 @@
       max-width: 90px;
       font-size: 0.8rem;
       padding: 12px 8px;
+      flex-shrink: 0;
     }
     .schedule-wrapper .content-cell {
       padding: 14px 15px;
       font-size: 0.92rem;
+      word-break: break-word;
+      overflow-wrap: break-word;
     }
     .schedule-wrapper .schedule-row {
       border-radius: 10px;
@@ -336,6 +343,7 @@
       max-width: 75px;
       font-size: 0.72rem;
       padding: 10px 6px;
+      flex-shrink: 0;
     }
     .schedule-wrapper .multi-cell {
       padding: 8px 10px 52px;
@@ -343,9 +351,13 @@
       justify-content: flex-start;
       width: 100%;
       overflow-wrap: break-word;
+      word-break: break-word;
     }
     .schedule-wrapper .multi-cell .session-title {
       font-size: 0.78rem;
+      word-break: break-word;
+      overflow-wrap: break-word;
+      max-width: 100%;
     }
     .schedule-wrapper .multi-cell .session-type {
       font-size: 0.65rem;
@@ -353,6 +365,8 @@
     .schedule-wrapper .content-cell {
       padding: 12px 10px;
       font-size: 0.85rem;
+      word-break: break-word;
+      overflow-wrap: break-word;
     }
 
     .schedule-wrapper .session-meta {
