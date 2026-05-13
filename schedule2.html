@@ -1,305 +1,305 @@
-!doctype html
-html lang=ru
-head
-  meta charset=UTF-8 
-  meta name=viewport content=width=device-width, initial-scale=1.0 
-  titleРасписание мероприятияtitle
-  style
-    root{
-      --bg#071425;
-      --card#0c2238;
-      --line#48b8ff66;
-      --text#d9f2ff;
-      --muted#9cc7df;
-      --accent#66d4ff;
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Расписание мероприятия</title>
+  <style>
+    :root{
+      --bg:#071425;
+      --card:#0c2238;
+      --line:#48b8ff66;
+      --text:#d9f2ff;
+      --muted:#9cc7df;
+      --accent:#66d4ff;
     }
 
-     { box-sizing border-box; }
+    * { box-sizing: border-box; }
 
     body{
-      margin0;
-      font-familySegoe UI, Tahoma, sans-serif;
-      colorvar(--text);
-      background #000;
+      margin:0;
+      font-family:"Segoe UI", Tahoma, sans-serif;
+      color:var(--text);
+      background: #000;
         var(--bg);
-      min-height100vh;
-      padding28px;
+      min-height:100vh;
+      padding:28px;
     }
 
     .wrap{
-      max-width1200px;
-      margin0 auto;
+      max-width:1200px;
+      margin:0 auto;
     }
 
     .title{
-      margin0 0 14px;
-      font-size28px;
-      font-weight700;
-      letter-spacing.3px;
-      color#eaf9ff;
+      margin:0 0 14px;
+      font-size:28px;
+      font-weight:700;
+      letter-spacing:.3px;
+      color:#eaf9ff;
     }
 
     .subtitle{
-      margin0 0 20px;
-      colorvar(--muted);
-      font-size14px;
+      margin:0 0 20px;
+      color:var(--muted);
+      font-size:14px;
     }
 
-     ===== DESKTOP TABLE ===== 
+    /* ===== DESKTOP TABLE ===== */
     .schedule{
-      width100%;
-      border-collapseseparate;
-      border-spacing0;
-      backgroundrgba(12,34,56,.55);
-      border1px solid var(--line);
-      border-radius14px;
-      overflowhidden;
-      backdrop-filterblur(2px);
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      background:rgba(12,34,56,.55);
+      border:1px solid var(--line);
+      border-radius:14px;
+      overflow:hidden;
+      backdrop-filter:blur(2px);
     }
 
     .schedule td{
-      border-right1px solid var(--line);
-      border-bottom1px solid var(--line);
-      padding12px 10px;
-      text-aligncenter;
-      vertical-alignmiddle;
-      font-size14px;
-      line-height1.35;
+      border-right:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      padding:12px 10px;
+      text-align:center;
+      vertical-align:middle;
+      font-size:14px;
+      line-height:1.35;
     }
 
-    .schedule trlast-child td{ border-bottom0; }
-    .schedule tdlast-child{ border-right0; }
+    .schedule tr:last-child td{ border-bottom:0; }
+    .schedule td:last-child{ border-right:0; }
 
     .time{
-      width130px;
-      colorvar(--accent);
-      font-weight700;
-      backgroundrgba(102,212,255,.06);
-      white-spacenowrap;
+      width:130px;
+      color:var(--accent);
+      font-weight:700;
+      background:rgba(102,212,255,.06);
+      white-space:nowrap;
     }
 
     .single{
-      text-aligncenter;
-      font-weight600;
-      color#e8f8ff;
-      backgroundrgba(102,212,255,.06);
+      text-align:center;
+      font-weight:600;
+      color:#e8f8ff;
+      background:rgba(102,212,255,.06);
     }
 
     .track{
-      min-width150px;
-      color#d7f0ff;
+      min-width:150px;
+      color:#d7f0ff;
     }
 
     .type{
-      margin-top6px;
-      font-size12px;
-      colorvar(--muted);
-      font-styleitalic;
+      margin-top:6px;
+      font-size:12px;
+      color:var(--muted);
+      font-style:italic;
     }
 
-     ===== MOBILE CARDS (hidden on desktop) ===== 
+    /* ===== MOBILE CARDS (hidden on desktop) ===== */
     .mobile-schedule{
-      displaynone;
+      display:none;
     }
 
     .slot{
-      border1px solid var(--line);
-      border-radius12px;
-      backgroundrgba(12,34,56,.6);
-      overflowhidden;
-      margin-bottom12px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:rgba(12,34,56,.6);
+      overflow:hidden;
+      margin-bottom:12px;
     }
 
     .slot-time{
-      padding10px 12px;
-      colorvar(--accent);
-      font-weight700;
-      font-size14px;
-      backgroundrgba(102,212,255,.08);
-      border-bottom1px solid var(--line);
+      padding:10px 12px;
+      color:var(--accent);
+      font-weight:700;
+      font-size:14px;
+      background:rgba(102,212,255,.08);
+      border-bottom:1px solid var(--line);
     }
 
     .slot-content{
-      padding10px 12px;
+      padding:10px 12px;
     }
 
     .slot-item{
-      padding8px 0;
-      border-bottom1px dashed rgba(72,184,255,.35);
-      font-size14px;
-      line-height1.35;
+      padding:8px 0;
+      border-bottom:1px dashed rgba(72,184,255,.35);
+      font-size:14px;
+      line-height:1.35;
     }
 
-    .slot-itemlast-child{
-      border-bottom0;
-      padding-bottom2px;
+    .slot-item:last-child{
+      border-bottom:0;
+      padding-bottom:2px;
     }
 
     .slot-item .type{
-      margin-top4px;
-      font-size12px;
+      margin-top:4px;
+      font-size:12px;
     }
 
     .slot-single{
-      font-weight600;
-      color#e8f8ff;
-      font-size14px;
-      line-height1.35;
+      font-weight:600;
+      color:#e8f8ff;
+      font-size:14px;
+      line-height:1.35;
     }
 
     .footer-note{
-      margin-top12px;
-      colorvar(--muted);
-      font-size13px;
+      margin-top:12px;
+      color:var(--muted);
+      font-size:13px;
     }
 
-     ===== PHONE ADAPTIVE ===== 
-    @media (max-width 768px){
+    /* ===== PHONE ADAPTIVE ===== */
+    @media (max-width: 768px){
       body{
-        padding14px;
+        padding:14px;
       }
 
       .title{
-        font-size22px;
-        margin-bottom10px;
+        font-size:22px;
+        margin-bottom:10px;
       }
 
       .subtitle{
-        margin-bottom14px;
-        font-size13px;
+        margin-bottom:14px;
+        font-size:13px;
       }
 
-       Hide table on phone 
+      /* Hide table on phone */
       .schedule{
-        displaynone;
+        display:none;
       }
 
-       Show mobile cards 
+      /* Show mobile cards */
       .mobile-schedule{
-        displayblock;
+        display:block;
       }
     }
-  style
-head
-body
-  div class=wrap
+  </style>
+</head>
+<body>
+  <div class="wrap">
     
 
-    !-- DESKTOP --
-    table class=schedule aria-label=Расписание мероприятия (десктоп)
-      tbody
-        tr
-          td class=time10.00–11.00td
-          td class=single colspan=6Регистрация, приветственный кофеtd
-        tr
-        tr
-          td class=time11.00–11.15td
-          td class=single colspan=6Открытие мероприятияtd
-        tr
-        tr
-          td class=time11.15–13.00td
-          td class=trackАппаратное обеспечение систем ИИ и обработки данныхdiv class=typeСекцияdivtd
-          td class=trackOpen trackdiv class=typeСекцияdivtd
-          td class=trackИИ в образованииdiv class=typeСекцияdivtd
-          td class=trackДоверие и недоверие к системам ИИ в области здоровьяdiv class=typeКруглый столdivtd
-          td class=trackИИ и большие данные в оценке кадровой потребностиdiv class=typeКруглый столdivtd
-          td class=trackРоссийско-Китайское сотрудничество в области ИИdiv class=typeСекцияdivtd
-        tr
-        tr
-          td class=time13.00–13.30td
-          td class=single colspan=6Кофе-брейкtd
-        tr
-        tr
-          td class=time13.30–15.15td
-          td class=trackРобототехника и ИИ в промышленностиdiv class=typeСекцияdivtd
-          td class=trackOpen trackdiv class=typeСекцияdivtd
-          td class=trackИИ и большие данные в социальной сфере и госуправленииdiv class=typeСекцияdivtd
-          td class=trackИИ в аналитикеdiv class=typeКруглый столdivtd
-          td class=trackЗаседание экспертного совета по академической этике использования ИИdiv class=typeКруглый столdivtd
-          td class=trackЗакрытое совещание проректоров и вендоров ПОdiv class=typeКруглый столdivtd
-        tr
-        tr
-          td class=time15.15–16.30td
-          td class=single colspan=6Обед  Нетворкингtd
-        tr
-        tr
-          td class=time16.30–17.00td
-          td class=single colspan=6Торжественное открытие церемонии награждения (актовый зал)td
-        tr
-        tr
-          td class=time17.00–19.00td
-          td class=single colspan=6Церемония награждения Премией «Гравитация» (актовый зал)td
-        tr
-        tr
-          td class=time19.00–21.00td
-          td class=single colspan=6Фуршет  Культурная программаtd
-        tr
-      tbody
-    table
+    <!-- DESKTOP -->
+    <table class="schedule" aria-label="Расписание мероприятия (десктоп)">
+      <tbody>
+        <tr>
+          <td class="time">10.00–11.00</td>
+          <td class="single" colspan="6">Регистрация, приветственный кофе</td>
+        </tr>
+        <tr>
+          <td class="time">11.00–11.15</td>
+          <td class="single" colspan="6">Открытие мероприятия</td>
+        </tr>
+        <tr>
+          <td class="time">11.15–13.00</td>
+          <td class="track">Аппаратное обеспечение систем ИИ и обработки данных<div class="type">Секция</div></td>
+          <td class="track">Open track<div class="type">Секция</div></td>
+          <td class="track">ИИ в образовании<div class="type">Секция</div></td>
+          <td class="track">Доверие и недоверие к системам ИИ в области здоровья<div class="type">Круглый стол</div></td>
+          <td class="track">ИИ и большие данные в оценке кадровой потребности<div class="type">Круглый стол</div></td>
+          <td class="track">Российско-Китайское сотрудничество в области ИИ<div class="type">Секция</div></td>
+        </tr>
+        <tr>
+          <td class="time">13.00–13.30</td>
+          <td class="single" colspan="6">Кофе-брейк</td>
+        </tr>
+        <tr>
+          <td class="time">13.30–15.15</td>
+          <td class="track">Робототехника и ИИ в промышленности<div class="type">Секция</div></td>
+          <td class="track">Open track<div class="type">Секция</div></td>
+          <td class="track">ИИ и большие данные в социальной сфере и госуправлении<div class="type">Секция</div></td>
+          <td class="track">ИИ в аналитике<div class="type">Круглый стол</div></td>
+          <td class="track">Заседание экспертного совета по академической этике использования ИИ<div class="type">Круглый стол</div></td>
+          <td class="track">Закрытое совещание проректоров и вендоров ПО<div class="type">Круглый стол</div></td>
+        </tr>
+        <tr>
+          <td class="time">15.15–16.30</td>
+          <td class="single" colspan="6">Обед / Нетворкинг</td>
+        </tr>
+        <tr>
+          <td class="time">16.30–17.00</td>
+          <td class="single" colspan="6">Торжественное открытие церемонии награждения (актовый зал)</td>
+        </tr>
+        <tr>
+          <td class="time">17.00–19.00</td>
+          <td class="single" colspan="6">Церемония награждения Премией «Гравитация» (актовый зал)</td>
+        </tr>
+        <tr>
+          <td class="time">19.00–21.00</td>
+          <td class="single" colspan="6">Фуршет / Культурная программа</td>
+        </tr>
+      </tbody>
+    </table>
 
-    !-- MOBILE --
-    div class=mobile-schedule aria-label=Расписание мероприятия (мобильная версия)
-      section class=slot
-        div class=slot-time10.00–11.00div
-        div class=slot-contentdiv class=slot-singleРегистрация, приветственный кофеdivdiv
-      section
+    <!-- MOBILE -->
+    <div class="mobile-schedule" aria-label="Расписание мероприятия (мобильная версия)">
+      <section class="slot">
+        <div class="slot-time">10.00–11.00</div>
+        <div class="slot-content"><div class="slot-single">Регистрация, приветственный кофе</div></div>
+      </section>
 
-      section class=slot
-        div class=slot-time11.00–11.15div
-        div class=slot-contentdiv class=slot-singleОткрытие мероприятияdivdiv
-      section
+      <section class="slot">
+        <div class="slot-time">11.00–11.15</div>
+        <div class="slot-content"><div class="slot-single">Открытие мероприятия</div></div>
+      </section>
 
-      section class=slot
-        div class=slot-time11.15–13.00div
-        div class=slot-content
-          div class=slot-itemАппаратное обеспечение систем ИИ и обработки данныхdiv class=typeСекцияdivdiv
-          div class=slot-itemOpen trackdiv class=typeСекцияdivdiv
-          div class=slot-itemИИ в образованииdiv class=typeСекцияdivdiv
-          div class=slot-itemДоверие и недоверие к системам ИИ в области здоровьяdiv class=typeКруглый столdivdiv
-          div class=slot-itemИИ и большие данные в оценке кадровой потребностиdiv class=typeКруглый столdivdiv
-          div class=slot-itemРоссийско-Китайское сотрудничество в области ИИdiv class=typeКруглый столdivdiv
-        div
-      section
+      <section class="slot">
+        <div class="slot-time">11.15–13.00</div>
+        <div class="slot-content">
+          <div class="slot-item">Аппаратное обеспечение систем ИИ и обработки данных<div class="type">Секция</div></div>
+          <div class="slot-item">Open track<div class="type">Секция</div></div>
+          <div class="slot-item">ИИ в образовании<div class="type">Секция</div></div>
+          <div class="slot-item">Доверие и недоверие к системам ИИ в области здоровья<div class="type">Круглый стол</div></div>
+          <div class="slot-item">ИИ и большие данные в оценке кадровой потребности<div class="type">Круглый стол</div></div>
+          <div class="slot-item">Российско-Китайское сотрудничество в области ИИ<div class="type">Круглый стол</div></div>
+        </div>
+      </section>
 
-      section class=slot
-        div class=slot-time13.00–13.30div
-        div class=slot-contentdiv class=slot-singleКофе-брейкdivdiv
-      section
+      <section class="slot">
+        <div class="slot-time">13.00–13.30</div>
+        <div class="slot-content"><div class="slot-single">Кофе-брейк</div></div>
+      </section>
 
-      section class=slot
-        div class=slot-time13.30–15.15div
-        div class=slot-content
-          div class=slot-itemРобототехника и ИИ в промышленностиdiv class=typeСекцияdivdiv
-          div class=slot-itemOpen trackdiv class=typeСекцияdivdiv
-          div class=slot-itemИИ и большие данные в социальной сфере и госуправленииdiv class=typeСекцияdivdiv
-          div class=slot-itemИИ в аналитикеdiv class=typeКруглый столdivdiv
-          div class=slot-itemЗаседание экспертного совета по академической этике использования ИИdiv class=typeКруглый столdivdiv
-          div class=slot-itemЗакрытое совещание проректоров и вендоров ПОdiv class=typeКруглый столdivdiv
-        div
-      section
+      <section class="slot">
+        <div class="slot-time">13.30–15.15</div>
+        <div class="slot-content">
+          <div class="slot-item">Робототехника и ИИ в промышленности<div class="type">Секция</div></div>
+          <div class="slot-item">Open track<div class="type">Секция</div></div>
+          <div class="slot-item">ИИ и большие данные в социальной сфере и госуправлении<div class="type">Секция</div></div>
+          <div class="slot-item">ИИ в аналитике<div class="type">Круглый стол</div></div>
+          <div class="slot-item">Заседание экспертного совета по академической этике использования ИИ<div class="type">Круглый стол</div></div>
+          <div class="slot-item">Закрытое совещание проректоров и вендоров ПО<div class="type">Круглый стол</div></div>
+        </div>
+      </section>
 
-      section class=slot
-        div class=slot-time15.15–16.30div
-        div class=slot-contentdiv class=slot-singleОбед  Нетворкингdivdiv
-      section
+      <section class="slot">
+        <div class="slot-time">15.15–16.30</div>
+        <div class="slot-content"><div class="slot-single">Обед / Нетворкинг</div></div>
+      </section>
 
-      section class=slot
-        div class=slot-time16.30–17.00div
-        div class=slot-contentdiv class=slot-singleТоржественное открытие церемонии награждения (актовый зал)divdiv
-      section
+      <section class="slot">
+        <div class="slot-time">16.30–17.00</div>
+        <div class="slot-content"><div class="slot-single">Торжественное открытие церемонии награждения (актовый зал)</div></div>
+      </section>
 
-      section class=slot
-        div class=slot-time17.00–19.00div
-        div class=slot-contentdiv class=slot-singleЦеремония награждения Премией «Гравитация» (актовый зал)divdiv
-      section
+      <section class="slot">
+        <div class="slot-time">17.00–19.00</div>
+        <div class="slot-content"><div class="slot-single">Церемония награждения Премией «Гравитация» (актовый зал)</div></div>
+      </section>
 
-      section class=slot
-        div class=slot-time19.00–21.00div
-        div class=slot-contentdiv class=slot-singleФуршет  Культурная программаdivdiv
-      section
-    div
+      <section class="slot">
+        <div class="slot-time">19.00–21.00</div>
+        <div class="slot-content"><div class="slot-single">Фуршет / Культурная программа</div></div>
+      </section>
+    </div>
 
    
-  div
-body
-html
+  </div>
+</body>
+</html>
